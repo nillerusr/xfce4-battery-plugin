@@ -39,6 +39,7 @@ typedef struct
   /* not present in /proc */
   int rtime;			/* remaining time                        */
   int percentage;		/* battery percentage (-1 if no battery) */
+  int battery_life;
 }
 ACPIstate;
 

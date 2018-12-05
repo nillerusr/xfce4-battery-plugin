@@ -600,6 +600,12 @@ int read_acpi_state_sysfs(int battery)
 			sprintf(buf,"%s/%s",batteries[battery], name);
 			acpistate->pvoltage = read_sysfs_int(buf);
 		}
+
+		if (strcmp(name,"capacity") == 0)
+		{
+			sprintf(buf,"%s/%s",batteries[battery], name);
+			acpistate->battery_life = read_sysfs_int(buf);
+		}
 	}
 	closedir(sysfs);
 	return acpiinfo->present;
@@ -628,6 +634,7 @@ int read_acpi_state(int battery)
   acpistate->pvoltage = 0;
   acpistate->rtime = 0;
   acpistate->percentage = 0;
+  acpistate->battery_life = 0;
 
   snprintf(buf, BUFSIZ, "%s", "hw.acpi.battery.time");
   len = name2oid(bufp, mib);

@@ -237,7 +237,7 @@ update_apm_status(t_battmon *battmon)
           rate = last_rate;
         }
 
-        charge = (((float)ccapacity)/((float)lcapacity))*100;
+        charge = acpistate->battery_life;
 
         if ( last_acline )
             time_remaining = ((float)(lcapacity-ccapacity)/(float)(rate))*60;
